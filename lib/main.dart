@@ -18,15 +18,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     //RETURN
     return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          color: constants.appBarColor,
+          ),
+      ),
+
       //Tab Controller
       home: DefaultTabController(
         length: 5,
         child: Scaffold(
-          appBar: AppBar(
+          appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(constants.tabHeight),
+          child: AppBar(
             bottom: const TabBar(
+              indicatorColor: constants.tabTextColor,
               tabs: [
                 Tab(text: 'Home'),
                 Tab(text: 'About'),
@@ -35,13 +43,15 @@ class MyApp extends StatelessWidget {
                 Tab(text: 'Contact'),
               ],
             ),
-            title: const Text(constants.title),
+          )
           ),
           body: const TabBarView(
             children: [
               homepage.HomePage(),
               aboutpage.AboutPage(),
-              Icon(Icons.directions_bike),
+              experiencepage.ExperiencePage(),
+              projectspage.ProjectsPage(),
+              contactpage.ContactPage()
             ],
           ),
         ),

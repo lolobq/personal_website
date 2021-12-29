@@ -14,28 +14,28 @@ class _HomePageState extends State<HomePage> {
     //CONSTANTS
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    double myPictureRadius = 100;
+    const double myPictureRadius = 150;
 
     //Circle Picture
     final myPicture = Container(
       alignment: Alignment.topCenter,
       padding: const EdgeInsets.only(top: 50, bottom: 70),
-      child: Hero(
-          tag: 'hero',
-          child: CircleAvatar(
-            radius: myPictureRadius,
-            child: Image.asset('assets/laurenhomepage.png'),
-          )),
+      child: const CircleAvatar(
+        radius: myPictureRadius + 3,
+        backgroundColor: constants.appBarColor,
+        child: CircleAvatar(
+          radius: myPictureRadius,
+          backgroundImage: AssetImage('assets/laurenhome.jpg'),
+        ),
+      ),
     );
-
-    //
 
     //RETURN
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
                 repeat: ImageRepeat.repeat,
-                image: AssetImage('assets/starrynight.jpg'),
+                image: AssetImage('assets/mountains.jpg'),
                 fit: BoxFit.cover)),
         child: Scaffold(
           backgroundColor: Colors.transparent,
