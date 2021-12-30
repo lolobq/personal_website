@@ -1,12 +1,12 @@
-import 'dart:html';
-
+import 'dart:html' as html;
 import 'package:flutter/material.dart';
-import 'package:personal_website/constants.dart' as constants;
-import 'package:personal_website/home_page.dart' as homepage;
-import 'package:personal_website/about_page.dart' as aboutpage;
-import 'package:personal_website/experience_page.dart' as experiencepage;
-import 'package:personal_website/projects_page.dart' as projectspage;
-import 'package:personal_website/contact_page.dart' as contactpage;
+import 'package:google_fonts/google_fonts.dart';
+import 'package:personal_website/constants/values.dart' as values;
+import 'package:personal_website/ui/home_page.dart' as homepage;
+import 'package:personal_website/ui/about_page.dart' as aboutpage;
+import 'package:personal_website/ui/experience_page.dart' as experiencepage;
+import 'package:personal_website/ui/projects_page.dart' as projectspage;
+import 'package:personal_website/ui/contact_page.dart' as contactpage;
 
 void main() {
   runApp(const MyApp());
@@ -21,8 +21,9 @@ class MyApp extends StatelessWidget {
     //RETURN
     return MaterialApp(
       theme: ThemeData(
+        brightness: Brightness.light,
         appBarTheme: const AppBarTheme(
-          color: constants.appBarColor,
+          color: values.appBarColor,
           ),
       ),
 
@@ -31,10 +32,11 @@ class MyApp extends StatelessWidget {
         length: 5,
         child: Scaffold(
           appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(constants.tabHeight),
+          preferredSize: const Size.fromHeight(values.tabHeight),
           child: AppBar(
             bottom: const TabBar(
-              indicatorColor: constants.tabTextColor,
+              indicatorColor: values.tabTextColor,
+              indicatorWeight: values.tabIndicatorHeight,
               tabs: [
                 Tab(text: 'Home'),
                 Tab(text: 'About'),

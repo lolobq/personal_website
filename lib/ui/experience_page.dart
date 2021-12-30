@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/constants.dart' as constants;
+import 'package:personal_website/constants/values.dart' as values;
 
 class ExperiencePage extends StatefulWidget {
   const ExperiencePage({Key? key}) : super(key: key);
