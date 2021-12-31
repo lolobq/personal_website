@@ -1,36 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_website/constants/fonts.dart';
 
 class TextStyles {
   TextStyles._();
 
-  static TextStyle get logo => TextStyle(
-        fontFamily: Fonts.product,
-        color: Color(0xFF45405B),
-        fontSize: 22.0, //22.0
+  static TextStyle get homeName => const TextStyle(
+        color: Color.fromARGB(255, 2, 41, 71),
+        fontSize: 80.0, //30.0
         fontWeight: FontWeight.bold,
         letterSpacing: 1.0,
       );
 
-  static TextStyle get menu_item => TextStyle(
+  static TextStyle get homeIntro => const TextStyle(
         fontFamily: Fonts.product,
-        fontSize: 12.0, //12,.0
+        color: Colors.black,
+        fontSize: 30.0, //30.0
         letterSpacing: 1.0,
-        color: Color(0xFF45405B),
       );
 
-  static TextStyle get heading => TextStyle(
-        fontFamily: Fonts.nexa_bold,
-        color: Color(0xFF45405B),
-        fontSize: 45.0, //45.0
+  static TextStyle get footer => const TextStyle(
+        fontFamily: Fonts.product,
+        color: Colors.black87,
+        fontSize: 12.0, //10,.0
+        letterSpacing: 1.0,
+      );
+
+  static TextStyle get appbaritem => const TextStyle(
+        fontFamily: Fonts.product,
+        color: Colors.white70,
+        fontSize: 16.0, //12.0
         fontWeight: FontWeight.bold,
         letterSpacing: 1.0,
       );
 
-  static TextStyle get sub_heading => TextStyle(
-        color: Color(0xFF45405B),
+  static TextStyle get title => const TextStyle(
+        color: Colors.white,
         fontFamily: Fonts.product,
-        fontSize: 17.0, //17.0
+        fontSize: 24.0, //16.0
         letterSpacing: 1.2,
       );
 

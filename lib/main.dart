@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         brightness: Brightness.light,
+        canvasColor: values.appBarColor, //Drawer color if its created
         appBarTheme: const AppBarTheme(
           color: values.appBarColor,
         ),
@@ -53,50 +54,6 @@ class _AppChildState extends State<AppChild> {
     //Initialize ScreenUtil -> this will be used to get screen size and other stuff
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
 
-    //Build tab controller which contains app bar and tab bar
-    return _buildTabController(context);
+    return const homepage.HomePage();
   }
-}
-
-////////////////////////////////////////////////////////////////////////////////////
-//Tab Controller Methods:
-////////////////////////////////////////////////////////////////////////////////////
-Widget _buildTabController(BuildContext context) {
-  return DefaultTabController(
-    length: 5,
-    child: Scaffold(
-      appBar: _buildAppBar(context),
-      body: _buildTabBarView(context),
-    ),
-  );
-}
-
-PreferredSizeWidget _buildAppBar(BuildContext context) {
-  return PreferredSize(
-      preferredSize: const Size.fromHeight(values.tabHeight),
-      child: AppBar(
-        bottom: const TabBar(
-          indicatorColor: values.tabTextColor,
-          indicatorWeight: values.tabIndicatorHeight,
-          tabs: [
-            Tab(text: 'Home'),
-            Tab(text: 'About'),
-            Tab(text: 'Experience'),
-            Tab(text: 'Projects'),
-            Tab(text: 'Contact'),
-          ],
-        ),
-      ));
-}
-
-Widget _buildTabBarView(BuildContext context) {
-  return const TabBarView(
-    children: [
-      homepage.HomePage(),
-      aboutpage.AboutPage(),
-      experiencepage.ExperiencePage(),
-      projectspage.ProjectsPage(),
-      contactpage.ContactPage()
-    ],
-  );
 }

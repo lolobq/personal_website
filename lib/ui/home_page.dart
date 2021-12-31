@@ -1,10 +1,19 @@
 //My own classes imported
+import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_website/constants/values.dart' as values;
 import 'package:personal_website/constants/assets.dart';
+import 'package:personal_website/constants/strings.dart';
+import 'package:personal_website/constants/text_styles.dart';
 
 //Material class to allow web development
 import 'package:flutter/material.dart';
+import 'package:personal_website/responsive.dart';
+import 'package:personal_website/screen_util.dart';
+import 'dart:html' as html;
 
+////////////////////////////////////////////////////////////////////////////////////
+//Home Page Class
+////////////////////////////////////////////////////////////////////////////////////
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -13,111 +22,330 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //BUILD
   @override
   Widget build(BuildContext context) {
-    //CONSTANTS
-    double screenWidth = MediaQuery(data: data, child: child);
-    double screenHeight = ScreenUtil().screenHeight;
-    double myPictureRadius = ScreenUtil().setWidth(screenHeight * 0.3);
-    double myPictureHorPadding = ScreenUtil().setHeight(0.1 * screenHeight);
-    double nameTextHorPadding = ScreenUtil().setWidth(screenWidth * 0.2);
-    double nameTextVerPadding = ScreenUtil().setHeight(0.1 * screenHeight);
-    double nameTextFontSize = ScreenUtil().setSp(100);
-    double introTextPadding = ScreenUtil().setWidth(screenWidth * 0.05);
-    double introTextFontSize = ScreenUtil().setSp(30);
-
-    //Circle Picture
-    final myPicture = _buildMyPicture(context);
-
-    //Lauren Bourque Text
-    final laurenText = _buildNameText(context);
-
-    //Intro Text
-    final introText = _buildIntroText(context);
-
-    //RETURN
     return Container(
         decoration: _buildBackground(context),
         child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Center(
-            child: Column(
-              children: [myPicture, laurenText, introText],
-            ),
-          ),
-        ));
+            backgroundColor: Colors.transparent,
+            appBar: _buildAppBar(context),
+            drawer: _buildDrawer(context),
+            body: LayoutBuilder(builder: (context, constraints) {
+              return _buildBody(context, constraints);
+            })));
   }
-}
 
-////////////////////////////////////////////////////////////////////////////////////
-//Home Page Widget Build Methods
-////////////////////////////////////////////////////////////////////////////////////
-Widget _buildMyPicture(BuildContext context) {
-  return Container(
-    alignment: Alignment.topCenter,
-    padding:
-        EdgeInsets.only(top: myPictureHorPadding, bottom: myPictureHorPadding),
-    child: CircleAvatar(
-      radius: myPictureRadius + 3,
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Home Page AppBar Methods
+  ////////////////////////////////////////////////////////////////////////////////////
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
+    return AppBar(
       backgroundColor: values.appBarColor,
-      child: CircleAvatar(
-        radius: myPictureRadius,
-        backgroundImage: const AssetImage(Assets.laurenHome),
-      ),
-    ),
-  );
-}
+      elevation: 0.0,
+      actions:
+          !ResponsiveWidget.isSmallScreen(context) ? _buildActions() : null,
+      centerTitle: true,
+      title: _buildTitle(),
+    );
+  }
 
-Widget _buildNameText(BuildContext context) {
-  return Container(
-      padding: EdgeInsets.only(
-          left: nameTextHorPadding,
-          right: nameTextHorPadding,
-          bottom: nameTextVerPadding),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Flexible(
-            child: Text(
-              'Lauren Bourque',
-              style: TextStyle(
-                fontSize: nameTextFontSize,
-                color: values.homeNameTextColor,
-              ),
-              textScaleFactor: 1.0,
+  Widget _buildTitle() {
+    return Text(
+      Strings.name,
+      style: GoogleFonts.roboto(
+        textStyle: TextStyles.title,
+      ),
+    );
+  }
+
+  Drawer? _buildDrawer(BuildContext context) {
+    return ResponsiveWidget.isSmallScreen(context)
+        ? Drawer(
+            child: ListView(
+              padding: const EdgeInsets.all(20),
+              children: _buildActions(),
             ),
           )
-        ],
-      ));
-}
+        : null;
+  }
 
-Widget _buildIntroText(BuildContext context) {
-  return Container(
-      padding: EdgeInsets.symmetric(horizontal: introTextPadding),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+  List<Widget> _buildActions() {
+    return <Widget>[
+      MaterialButton(
+        child: Text(
+          Strings.home,
+          style: GoogleFonts.robotoMono(
+              textStyle: TextStyles.appbaritem.copyWith(
+            color: Colors.white,
+          )),
+        ),
+        onPressed: () {},
+      ),
+      MaterialButton(
+        child: Text(
+          Strings.about,
+          style: GoogleFonts.robotoMono(textStyle: TextStyles.appbaritem),
+        ),
+        onPressed: () {},
+      ),
+      MaterialButton(
+        child: Text(
+          Strings.experience,
+          style: GoogleFonts.robotoMono(textStyle: TextStyles.appbaritem),
+        ),
+        onPressed: () {},
+      ),
+      MaterialButton(
+        child: Text(
+          Strings.projects,
+          style: GoogleFonts.robotoMono(textStyle: TextStyles.appbaritem),
+        ),
+        onPressed: () {},
+      ),
+      MaterialButton(
+        child: Text(
+          Strings.contact,
+          style: GoogleFonts.robotoMono(textStyle: TextStyles.appbaritem),
+        ),
+        onPressed: () {},
+      ),
+    ];
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Home Page Screen Methods
+  ////////////////////////////////////////////////////////////////////////////////////
+  Widget _buildBody(BuildContext context, BoxConstraints constraints) {
+    return SingleChildScrollView(
+        child: Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: ResponsiveWidget.isSmallScreen(context)
+              ? ScreenUtil.getInstance().setWidth(25)
+              : ScreenUtil.getInstance().setWidth(108)),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minWidth: constraints.maxWidth,
+          minHeight: constraints.maxHeight,
+        ),
+        child: ResponsiveWidget(
+            largeScreen: _buildLargeScreen(context),
+            mediumScreen: _buildMediumScreen(context),
+            smallScreen: _buildSmallScreen(context)),
+      ),
+    ));
+  }
+
+  Widget _buildLargeScreen(BuildContext context) {
+    return IntrinsicHeight(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Flexible(
-              child: Text(
-            'Hi there! Welcome to my place on the Internet. I\'m Lauren, a passionate nerd, fitness junkie, bibliophile, and wanderlust. '
-            'I build things and love to showcase them, so take a look around and stay awhile.',
-            style: TextStyle(
-              fontSize: introTextFontSize,
-              color: values.homeBodyTextColor,
+          Expanded(
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(flex: 1, child: _buildContent(context)),
+              ],
             ),
-            textAlign: TextAlign.center,
-            textScaleFactor: 1.0,
-          ))
+          ),
+          _buildFooter(context)
         ],
-      ));
-}
+      ),
+    );
+  }
 
-BoxDecoration _buildBackground(BuildContext context){
-  return const BoxDecoration(
-    image: DecorationImage(
+  Widget _buildMediumScreen(BuildContext context) {
+    return IntrinsicHeight(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(flex: 1, child: _buildContent(context)),
+              ],
+            ),
+          ),
+          _buildFooter(context)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSmallScreen(BuildContext context) {
+    return IntrinsicHeight(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(flex: 1, child: _buildContent(context)),
+                const Divider(),
+                _buildNameText(context),
+                SizedBox(
+                    height:
+                        ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
+                _buildSocialIcons(),
+                SizedBox(
+                    height:
+                        ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Home Page Body Methods
+  ////////////////////////////////////////////////////////////////////////////////////
+  Widget _buildContent(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        _buildMyPicture(context),
+        const SizedBox(height: 4.0),
+        _buildNameText(context),
+        SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 15.0 : 30.0),
+        _buildIntroText(context),
+      ],
+    );
+  }
+
+  Widget _buildMyPicture(BuildContext context) {
+    return CircleAvatar(
+      radius: ResponsiveWidget.isSmallScreen(context) ? 123 : 153,
+      backgroundColor: values.appBarColor,
+      child: CircleAvatar(
+        radius: ResponsiveWidget.isSmallScreen(context) ? 120 : 150,
+        backgroundImage: const AssetImage(Assets.laurenHome),
+      ),
+    );
+  }
+
+  Widget _buildNameText(BuildContext context) {
+    return Text(
+      Strings.name,
+      style: GoogleFonts.roboto(
+          textStyle: TextStyles.homeName.copyWith(
+        fontSize: ResponsiveWidget.isSmallScreen(context) ? 50.0 : 80.0,
+      )),
+    );
+  }
+
+  Widget _buildIntroText(BuildContext context) {
+    return Text(
+      Strings.homeIntroText,
+      style: GoogleFonts.robotoMono(
+        textStyle: TextStyles.homeIntro.copyWith(
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 30.0,
+        ),
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  BoxDecoration _buildBackground(BuildContext context) {
+    return const BoxDecoration(
+        image: DecorationImage(
       repeat: ImageRepeat.repeat,
       image: AssetImage(Assets.mountains),
-      fit: BoxFit.cover)
-  );
+      fit: BoxFit.cover,
+    ));
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Footer Methods
+  ////////////////////////////////////////////////////////////////////////////////////
+  Widget _buildFooter(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        const Divider(),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Align(
+              child: _buildFooterText(context),
+              alignment: Alignment.centerLeft,
+            ),
+            Align(
+              child: _buildSocialIcons(),
+              alignment: Alignment.centerRight,
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 3,
+        )
+      ],
+    );
+  }
+
+  Widget _buildFooterText(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: 'Built with lots of ',
+            style: TextStyles.footer,
+          ),
+          const WidgetSpan(
+            child: Icon(
+              Icons.coffee,
+              size: 12,
+            ),
+          ),
+          TextSpan(
+            text: ' and Flutter.',
+            style: TextStyles.footer,
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSocialIcons() {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        GestureDetector(
+          onTap: () {
+            html.window.open(
+                "https://www.linkedin.com/in/lauren-bourque/", "LinkedIn");
+          },
+          child: Image.asset(
+            Assets.linkedIn,
+            height: 30.0,
+            width: 30.0,
+          ),
+        ),
+        const SizedBox(width: 16.0),
+        GestureDetector(
+          onTap: () {
+            html.window.open("https://github.com/lolobq", "Github");
+          },
+          child: Image.network(
+            Assets.github,
+            height: 30.0,
+            width: 30.0,
+          ),
+        ),
+      ],
+    );
+  }
+
+  //End of _HomePageState
 }

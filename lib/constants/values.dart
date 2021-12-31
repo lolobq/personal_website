@@ -10,3 +10,5 @@ const double tabIndicatorHeight = 4;
 //Home Page Text
 const Color homeNameTextColor = Color.fromARGB(255, 2, 41, 71); //navy blue
 const Color homeBodyTextColor = Colors.black;
+
+//Home Page Values
