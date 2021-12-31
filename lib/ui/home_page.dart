@@ -28,69 +28,17 @@ class _HomePageState extends State<HomePage> {
     double introTextFontSize = ScreenUtil().setSp(30);
 
     //Circle Picture
-    final myPicture = Container(
-      alignment: Alignment.topCenter,
-      padding: EdgeInsets.only(
-          top: myPictureHorPadding, bottom: myPictureHorPadding),
-      child: CircleAvatar(
-        radius: myPictureRadius + 3,
-        backgroundColor: values.appBarColor,
-        child: CircleAvatar(
-          radius: myPictureRadius,
-          backgroundImage: const AssetImage(Assets.laurenHome),
-        ),
-      ),
-    );
+    final myPicture = _buildMyPicture(context);
 
     //Lauren Bourque Text
-    final laurenText = Container(
-        padding: EdgeInsets.only(
-            left: nameTextHorPadding,
-            right: nameTextHorPadding,
-            bottom: nameTextVerPadding),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Flexible(
-              child: Text(
-                'Lauren Bourque',
-                style: TextStyle(
-                  fontSize: nameTextFontSize,
-                  color: values.homeNameTextColor,
-                ),
-                textScaleFactor: 1.0,
-              ),
-            )
-          ],
-        ));
+    final laurenText = _buildNameText(context);
 
     //Intro Text
-    final introText = Container(
-        padding: EdgeInsets.symmetric(horizontal: introTextPadding),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Flexible(
-                child: Text(
-              'Hi there! Welcome to my place on the Internet. I\'m Lauren, a passionate nerd, fitness junkie, bibliophile, and wanderlust. '
-              'I build things and love to showcase them, so take a look around and stay awhile.',
-              style: TextStyle(
-                fontSize: introTextFontSize,
-                color: values.homeBodyTextColor,
-              ),
-              textAlign: TextAlign.center,
-              textScaleFactor: 1.0,
-            ))
-          ],
-        ));
+    final introText = _buildIntroText(context);
 
     //RETURN
     return Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                repeat: ImageRepeat.repeat,
-                image: AssetImage(Assets.mountains),
-                fit: BoxFit.cover)),
+        decoration: _buildBackground(context),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Center(
@@ -100,4 +48,76 @@ class _HomePageState extends State<HomePage> {
           ),
         ));
   }
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+//Home Page Widget Build Methods
+////////////////////////////////////////////////////////////////////////////////////
+Widget _buildMyPicture(BuildContext context) {
+  return Container(
+    alignment: Alignment.topCenter,
+    padding:
+        EdgeInsets.only(top: myPictureHorPadding, bottom: myPictureHorPadding),
+    child: CircleAvatar(
+      radius: myPictureRadius + 3,
+      backgroundColor: values.appBarColor,
+      child: CircleAvatar(
+        radius: myPictureRadius,
+        backgroundImage: const AssetImage(Assets.laurenHome),
+      ),
+    ),
+  );
+}
+
+Widget _buildNameText(BuildContext context) {
+  return Container(
+      padding: EdgeInsets.only(
+          left: nameTextHorPadding,
+          right: nameTextHorPadding,
+          bottom: nameTextVerPadding),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Flexible(
+            child: Text(
+              'Lauren Bourque',
+              style: TextStyle(
+                fontSize: nameTextFontSize,
+                color: values.homeNameTextColor,
+              ),
+              textScaleFactor: 1.0,
+            ),
+          )
+        ],
+      ));
+}
+
+Widget _buildIntroText(BuildContext context) {
+  return Container(
+      padding: EdgeInsets.symmetric(horizontal: introTextPadding),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Flexible(
+              child: Text(
+            'Hi there! Welcome to my place on the Internet. I\'m Lauren, a passionate nerd, fitness junkie, bibliophile, and wanderlust. '
+            'I build things and love to showcase them, so take a look around and stay awhile.',
+            style: TextStyle(
+              fontSize: introTextFontSize,
+              color: values.homeBodyTextColor,
+            ),
+            textAlign: TextAlign.center,
+            textScaleFactor: 1.0,
+          ))
+        ],
+      ));
+}
+
+BoxDecoration _buildBackground(BuildContext context){
+  return const BoxDecoration(
+    image: DecorationImage(
+      repeat: ImageRepeat.repeat,
+      image: AssetImage(Assets.mountains),
+      fit: BoxFit.cover)
+  );
 }
