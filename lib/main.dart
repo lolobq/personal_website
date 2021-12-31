@@ -2,10 +2,6 @@
 import 'package:personal_website/constants/values.dart' as values;
 import 'package:personal_website/screen_util.dart';
 import 'package:personal_website/ui/home_page.dart' as homepage;
-import 'package:personal_website/ui/about_page.dart' as aboutpage;
-import 'package:personal_website/ui/experience_page.dart' as experiencepage;
-import 'package:personal_website/ui/projects_page.dart' as projectspage;
-import 'package:personal_website/ui/contact_page.dart' as contactpage;
 
 //Material class and html class to allow web development
 import 'package:flutter/material.dart';
