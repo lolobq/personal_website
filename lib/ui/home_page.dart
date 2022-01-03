@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildTitle() {
     return Text(
       Strings.name,
-      style: GoogleFonts.roboto(
+      style: GoogleFonts.josefinSans(
         textStyle: TextStyles.title,
       ),
     );
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
       MaterialButton(
         child: Text(
           Strings.home,
-          style: GoogleFonts.robotoMono(
+          style: GoogleFonts.josefinSans(
               textStyle: TextStyles.appbaritem.copyWith(
             color: Colors.white,
           )),
@@ -84,28 +84,28 @@ class _HomePageState extends State<HomePage> {
       MaterialButton(
         child: Text(
           Strings.about,
-          style: GoogleFonts.robotoMono(textStyle: TextStyles.appbaritem),
+          style: GoogleFonts.josefinSans(textStyle: TextStyles.appbaritem),
         ),
         onPressed: () {},
       ),
       MaterialButton(
         child: Text(
           Strings.experience,
-          style: GoogleFonts.robotoMono(textStyle: TextStyles.appbaritem),
+          style: GoogleFonts.josefinSans(textStyle: TextStyles.appbaritem),
         ),
         onPressed: () {},
       ),
       MaterialButton(
         child: Text(
           Strings.projects,
-          style: GoogleFonts.robotoMono(textStyle: TextStyles.appbaritem),
+          style: GoogleFonts.josefinSans(textStyle: TextStyles.appbaritem),
         ),
         onPressed: () {},
       ),
       MaterialButton(
         child: Text(
           Strings.contact,
-          style: GoogleFonts.robotoMono(textStyle: TextStyles.appbaritem),
+          style: GoogleFonts.josefinSans(textStyle: TextStyles.appbaritem),
         ),
         onPressed: () {},
       ),
@@ -215,9 +215,9 @@ class _HomePageState extends State<HomePage> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         _buildMyPicture(context),
-        const SizedBox(height: 4.0),
+        const SizedBox(height: 30.0),
         _buildNameText(context),
-        SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 15.0 : 30.0),
+        SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 15.0 : 20.0),
         _buildIntroText(context),
       ],
     );
@@ -237,9 +237,9 @@ class _HomePageState extends State<HomePage> {
   Widget _buildNameText(BuildContext context) {
     return Text(
       Strings.name,
-      style: GoogleFonts.roboto(
+      style: GoogleFonts.josefinSans(
           textStyle: TextStyles.homeName.copyWith(
-        fontSize: ResponsiveWidget.isSmallScreen(context) ? 50.0 : 80.0,
+        fontSize: ResponsiveWidget.isSmallScreen(context) ? 60.0 : 100.0,
       )),
     );
   }
@@ -247,9 +247,9 @@ class _HomePageState extends State<HomePage> {
   Widget _buildIntroText(BuildContext context) {
     return Text(
       Strings.homeIntroText,
-      style: GoogleFonts.robotoMono(
+      style: GoogleFonts.josefinSans(
         textStyle: TextStyles.homeIntro.copyWith(
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 30.0,
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 25.0 : 35.0,
         ),
       ),
       textAlign: TextAlign.center,
@@ -299,7 +299,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           TextSpan(
             text: 'Built with lots of ',
-            style: TextStyles.footer,
+            style: GoogleFonts.josefinSans(textStyle: TextStyles.footer),
           ),
           const WidgetSpan(
             child: Icon(
@@ -309,7 +309,7 @@ class _HomePageState extends State<HomePage> {
           ),
           TextSpan(
             text: ' and Flutter.',
-            style: TextStyles.footer,
+            style: GoogleFonts.josefinSans(textStyle: TextStyles.footer),
           )
         ],
       ),
