@@ -1,14 +1,19 @@
-//My own classes imported
+////////////////////////////////////////////////////////////////////////////////////
+//Home Page File:
+//
+//
+////////////////////////////////////////////////////////////////////////////////////
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_website/constants/values.dart' as values;
 import 'package:personal_website/constants/assets.dart';
 import 'package:personal_website/constants/strings.dart';
 import 'package:personal_website/constants/text_styles.dart';
-
-//Material class to allow web development
+import 'package:personal_website/ui/shared/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_website/responsive.dart';
 import 'package:personal_website/screen_util.dart';
+import 'package:personal_website/ui/shared/footer.dart';
 import 'dart:html' as html;
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -28,8 +33,10 @@ class _HomePageState extends State<HomePage> {
         decoration: _buildBackground(context),
         child: Scaffold(
             backgroundColor: Colors.transparent,
+            drawer: ResponsiveWidget.isSmallScreen(context)
+                ? _buildDrawer(context)
+                : null,
             appBar: _buildAppBar(context),
-            drawer: _buildDrawer(context),
             body: LayoutBuilder(builder: (context, constraints) {
               return _buildBody(context, constraints);
             })));
@@ -39,77 +46,17 @@ class _HomePageState extends State<HomePage> {
   //Home Page AppBar Methods
   ////////////////////////////////////////////////////////////////////////////////////
   PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: values.appBarColor,
-      elevation: 0.0,
-      actions:
-          !ResponsiveWidget.isSmallScreen(context) ? _buildActions() : null,
-      centerTitle: true,
-      title: _buildTitle(),
+    const NewAppBar newAppBar = NewAppBar();
+
+    return const PreferredSize(
+      preferredSize: Size.fromHeight(60.0),
+      child: newAppBar,
     );
   }
 
-  Widget _buildTitle() {
-    return Text(
-      Strings.name,
-      style: GoogleFonts.josefinSans(
-        textStyle: TextStyles.title,
-      ),
-    );
-  }
-
-  Drawer? _buildDrawer(BuildContext context) {
-    return ResponsiveWidget.isSmallScreen(context)
-        ? Drawer(
-            child: ListView(
-              padding: const EdgeInsets.all(20),
-              children: _buildActions(),
-            ),
-          )
-        : null;
-  }
-
-  List<Widget> _buildActions() {
-    return <Widget>[
-      MaterialButton(
-        child: Text(
-          Strings.home,
-          style: GoogleFonts.josefinSans(
-              textStyle: TextStyles.appbaritem.copyWith(
-            color: Colors.white,
-          )),
-        ),
-        onPressed: () {},
-      ),
-      MaterialButton(
-        child: Text(
-          Strings.about,
-          style: GoogleFonts.josefinSans(textStyle: TextStyles.appbaritem),
-        ),
-        onPressed: () {},
-      ),
-      MaterialButton(
-        child: Text(
-          Strings.experience,
-          style: GoogleFonts.josefinSans(textStyle: TextStyles.appbaritem),
-        ),
-        onPressed: () {},
-      ),
-      MaterialButton(
-        child: Text(
-          Strings.projects,
-          style: GoogleFonts.josefinSans(textStyle: TextStyles.appbaritem),
-        ),
-        onPressed: () {},
-      ),
-      MaterialButton(
-        child: Text(
-          Strings.contact,
-          style: GoogleFonts.josefinSans(textStyle: TextStyles.appbaritem),
-        ),
-        onPressed: () {},
-      ),
-    ];
+  AppDrawer _buildDrawer(BuildContext context) {
+    const AppDrawer drawer = AppDrawer();
+    return drawer;
   }
 
   ////////////////////////////////////////////////////////////////////////////////////
@@ -178,6 +125,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildSmallScreen(BuildContext context) {
+    const SocialIcons socialIcons = SocialIcons();
+
     return IntrinsicHeight(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -194,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                     height:
                         ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
-                _buildSocialIcons(),
+                socialIcons,
                 SizedBox(
                     height:
                         ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
@@ -269,82 +218,8 @@ class _HomePageState extends State<HomePage> {
   //Footer Methods
   ////////////////////////////////////////////////////////////////////////////////////
   Widget _buildFooter(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        const Divider(),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Align(
-              child: _buildFooterText(context),
-              alignment: Alignment.centerLeft,
-            ),
-            Align(
-              child: _buildSocialIcons(),
-              alignment: Alignment.centerRight,
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 3,
-        )
-      ],
-    );
-  }
-
-  Widget _buildFooterText(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: 'Built with lots of ',
-            style: GoogleFonts.josefinSans(textStyle: TextStyles.footer),
-          ),
-          const WidgetSpan(
-            child: Icon(
-              Icons.coffee,
-              size: 12,
-            ),
-          ),
-          TextSpan(
-            text: ' and Flutter.',
-            style: GoogleFonts.josefinSans(textStyle: TextStyles.footer),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSocialIcons() {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        GestureDetector(
-          onTap: () {
-            html.window.open(
-                "https://www.linkedin.com/in/lauren-bourque/", "LinkedIn");
-          },
-          child: Image.asset(
-            Assets.linkedIn,
-            height: 30.0,
-            width: 30.0,
-          ),
-        ),
-        const SizedBox(width: 16.0),
-        GestureDetector(
-          onTap: () {
-            html.window.open("https://github.com/lolobq", "Github");
-          },
-          child: Image.network(
-            Assets.github,
-            height: 30.0,
-            width: 30.0,
-          ),
-        ),
-      ],
-    );
+    const Footer footer = Footer();
+    return footer;
   }
 
   //End of _HomePageState

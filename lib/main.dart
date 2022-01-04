@@ -1,9 +1,12 @@
-//My own classes imported
+////////////////////////////////////////////////////////////////////////////////////
+//Main File:
+//
+//
+////////////////////////////////////////////////////////////////////////////////////
+
 import 'package:personal_website/constants/values.dart' as values;
 import 'package:personal_website/screen_util.dart';
-import 'package:personal_website/ui/home_page.dart' as homepage;
-
-//Material class and html class to allow web development
+import 'package:personal_website/ui/pages/home_page.dart' as homepage;
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
 
