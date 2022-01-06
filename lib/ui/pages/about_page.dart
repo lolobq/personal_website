@@ -13,6 +13,7 @@ import 'package:personal_website/ui/shared/appbar.dart';
 import 'package:personal_website/ui/shared/body.dart';
 import 'package:personal_website/constants/text_styles.dart';
 import 'package:personal_website/constants/values.dart' as values;
+import 'package:personal_website/widgets.dart';
 
 ////////////////////////////////////////////////////////////////////////////////////
 //About Page Class
@@ -97,6 +98,14 @@ class _AboutPageState extends State<AboutPage> {
                       child: _buildCenteredHowIGotHereSection(context),
                     )
                   : _buildHowIGotHereSection(context),
+              const SizedBox(height: 20),
+              ResponsiveWidget.isSmallScreen(context)
+                  ? Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: _buildSmallInterestsSection(context),
+                    )
+                  : _buildLargeInterestsSection(context),
+              const SizedBox(height: 60),
             ],
           ),
         ));
@@ -260,6 +269,111 @@ class _AboutPageState extends State<AboutPage> {
         const SizedBox(height: 20),
         _buildBulletList(context, Strings.aboutBullets),
         const SizedBox(height: 20),
+      ],
+    );
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Interests Methods
+  ////////////////////////////////////////////////////////////////////////////////////
+  Widget _buildILikeText(BuildContext context) {
+    return Container(
+      padding: ResponsiveWidget.isSmallScreen(context)
+          ? const EdgeInsets.all(0)
+          : const EdgeInsets.only(left: 60),
+      child: Text(
+        Strings.iLike,
+        style: GoogleFonts.josefinSans(
+            textStyle: TextStyles.homeName.copyWith(
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 22.0 : 30.0,
+        )),
+      ),
+    );
+  }
+
+  List<InterestTile> _createInterestTiles(BuildContext context) {
+    //Create interests
+    final Interest weightlifting = Interest(Strings.weightlifting,
+        Strings.weightliftingCaption, Assets.laurenGym, '');
+    final Interest travel = Interest(Strings.travel, Strings.travelCaption,
+        Assets.laurenTravel, Strings.travelLink);
+    final Interest reading = Interest(Strings.reading, Strings.readingCaption,
+        Assets.books, Strings.readingLink);
+    final Interest tennis = Interest(Strings.tennis, Strings.tennisCaption,
+        Assets.laurenTennis, Strings.tennisLink);
+    final Interest skiing = Interest(Strings.skiing, Strings.skiingCaption,
+        Assets.laurenSkiing, Strings.skiingLink);
+    final Interest cars =
+        Interest(Strings.cars, Strings.carsCaption, Assets.laurenCar, '');
+    //Create tiles
+    final InterestTile weightliftingTile = InterestTile(weightlifting);
+    final InterestTile travelTile = InterestTile(travel);
+    final InterestTile readingTile = InterestTile(reading);
+    final InterestTile tennisTile = InterestTile(tennis);
+    final InterestTile skiingTile = InterestTile(skiing);
+    final InterestTile carsTile = InterestTile(cars);
+
+    //Create list
+    List<InterestTile> interestsList = [
+      weightliftingTile,
+      travelTile,
+      readingTile,
+      tennisTile,
+      skiingTile,
+      carsTile
+    ];
+
+    return interestsList;
+  }
+
+  Widget _buildLargeInterestsSection(BuildContext context) {
+    List<InterestTile> interestTiles = _createInterestTiles(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _buildILikeText(context),
+        const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            interestTiles.elementAt(0),
+            interestTiles.elementAt(1),
+            interestTiles.elementAt(2),
+          ],
+        ),
+        const SizedBox(height: 50),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            interestTiles.elementAt(3),
+            interestTiles.elementAt(4),
+            interestTiles.elementAt(5),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSmallInterestsSection(BuildContext context) {
+    List<InterestTile> interestTiles = _createInterestTiles(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        _buildILikeText(context),
+        const SizedBox(height: 50),
+        interestTiles.elementAt(0),
+        const SizedBox(height: 50),
+        interestTiles.elementAt(1),
+        const SizedBox(height: 50),
+        interestTiles.elementAt(2),
+        const SizedBox(height: 50),
+        interestTiles.elementAt(3),
+        const SizedBox(height: 50),
+        interestTiles.elementAt(4),
+        const SizedBox(height: 50),
+        interestTiles.elementAt(5),
+        const SizedBox(height: 50),
       ],
     );
   }

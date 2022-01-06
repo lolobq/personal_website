@@ -29,22 +29,23 @@ class Body extends StatelessWidget {
   Widget _buildBody(
       BuildContext context, BoxConstraints constraints, Widget content) {
     return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: ResponsiveWidget.isSmallScreen(context)
-              ? ScreenUtil.getInstance().setWidth(25)
-              : ScreenUtil.getInstance().setWidth(70)),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minWidth: constraints.maxWidth,
-          minHeight: constraints.maxHeight,
-        ),
-        child: ResponsiveWidget(
-            largeScreen: _buildLargeScreen(context, content),
-            mediumScreen: _buildMediumScreen(context, content),
-            smallScreen: _buildSmallScreen(context, content)),
-      ),
-    ));
+          padding: EdgeInsets.symmetric(
+              horizontal: ResponsiveWidget.isSmallScreen(context)
+                  ? 25
+                  : 70),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: constraints.maxWidth,
+              minHeight: constraints.maxHeight,
+            ),
+            child: ResponsiveWidget(
+                largeScreen: _buildLargeScreen(context, content),
+                mediumScreen: _buildMediumScreen(context, content),
+                smallScreen: _buildSmallScreen(context, content)),
+          ),
+        ));
   }
 
   ////////////////////////////////////////////////////////////////////////////////////

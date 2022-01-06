@@ -4,26 +4,31 @@
 //Contains Strings class -> all strings used in the website
 ////////////////////////////////////////////////////////////////////////////////////
 
-import 'package:flutter/material.dart';
-
 class Strings {
   Strings._();
 
-  //App Bar strings
+  ////////////////////////////////////////////////////////////////////////////////////
+  //App Bar Strings
+  ////////////////////////////////////////////////////////////////////////////////////
   static const String home = 'Home';
   static const String about = 'About';
   static const String experience = 'Experience';
   static const String projects = 'Projects';
   static const String contact = 'Contact';
 
-  //Home page strings
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Home Page Strings
+  ////////////////////////////////////////////////////////////////////////////////////
   static const String name = 'Lauren Bourque';
   static const String homeIntroText =
       'Hi there! Welcome to my place on the Internet. '
       'I\'m Lauren, a passionate nerd, fitness junkie, bibliophile, and wanderlust. '
       'I build things and love to showcase them, so take a look around and stay awhile.';
 
-  //About Me Page strings
+  ////////////////////////////////////////////////////////////////////////////////////
+  //About Me Page Strings
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Intro strings
   static const String aboutMe = 'ABOUT ME';
   static const String currently = 'Currently';
   static const String introParagraph =
@@ -33,6 +38,7 @@ class Strings {
       'health, fitness, nutrition, sustainability, safety, and positive social impact. '
       'I aspire to make the world a better place by using humane technology to improve these fields.';
 
+  //How I Got Here strings
   static const String howIGotHere = 'How\'d I Get Here?';
   static const String bullet = '\u2022';
   static const String firstAbout =
@@ -69,7 +75,7 @@ class Strings {
   static const String twelfthAbout =
       'After graduating in 2020, I took a gap year and worked full-time among brilliant engineers. '
       'I flew a plane, acted as a project manager, and learned how the real world actually works.';
-  static const String thirteenthAbout = 
+  static const String thirteenthAbout =
       'After living in Maine for 18 years, my wanderlust got the best of me and I began college at UNC Charlotte in 2021.';
 
   static final List<String> aboutBullets = [
@@ -87,4 +93,40 @@ class Strings {
     twelfthAbout,
     thirteenthAbout
   ];
+
+  //Interests strings
+  static const String iLike = 'I Like: (Click to explore)';
+  static const String weightlifting = 'Weightlifting';
+  static const String travel = 'Travel';
+  static const String reading = 'Reading';
+  static const String tennis = 'Tennis';
+  static const String skiing = 'Skiing';
+  static const String cars = 'Cars';
+  static const String weightliftingLink = '';
+  static const String travelLink =
+      'https://www.google.com/maps/d/edit?mid=1034hFnXzE9-OUggmtzCZ8wbTfeXZk0_A&usp=sharing';
+  static const String readingLink = 'https://www.goodreads.com/user/show/81429668-lauren';
+  static const String tennisLink =
+      'https://app.universaltennis.com/profiles/396895?t=1';
+  static const String skiingLink = 'https://www.google.com/maps/d/edit?mid=1CrR_SEYLNIilQh69m2R5Kp_spZfJqxD3&usp=sharing';
+  static const String carsHoverText = '';
+
+  static const String weightliftingCaption =
+      'Fun fact: I had no clue how to lift weights until I met this guy. '
+      'He\'s taught me everything I know.';
+  static const String travelCaption =
+      'Fun fact: I love to travel, but I am HORRIBLE at geography. '
+      'It was my worst subject in school.';
+  static const String readingCaption =
+      'Fun fact: When I was a baby, my dad would prop me up in his lap with a book and read to me for hours. '
+      'I would cry the second he stopped. I was a fairly needy child.';
+  static const String tennisCaption =
+      'Fun fact: During the winter when I couldn\'t play tennis outside, I would hit a tennis ball in the house. '
+      'This wasn\'t my mom\'s favorite idea.';
+  static const String skiingCaption =
+      'Fun fact: I\'ve only ever skiied in Maine. '
+      'I\'m excited to hit the slopes out west.';
+  static const String carsCaption =
+      'Fun fact: I\'ve had a love of cars since I was little. '
+      'Hot wheels were my favorite toys and I had a tote container full of them.';
 }
