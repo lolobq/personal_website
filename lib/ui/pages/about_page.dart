@@ -84,7 +84,7 @@ class _AboutPageState extends State<AboutPage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           _buildIntroPic(context),
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 10),
                           _buildAboutMeIntro(context),
                         ],
                       ),
