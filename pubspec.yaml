@@ -48,6 +48,7 @@ flutter:
   assets:
   - assets/mountains.jpg
   - assets/laurenhome.jpg
+  - assets/laurenabout.jpg
   - assets/linkedin.png
   - assets/github.png
 

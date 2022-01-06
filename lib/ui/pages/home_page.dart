@@ -12,8 +12,7 @@ import 'package:personal_website/constants/text_styles.dart';
 import 'package:personal_website/ui/shared/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_website/responsive.dart';
-import 'package:personal_website/screen_util.dart';
-import 'package:personal_website/ui/shared/footer.dart';
+import 'package:personal_website/ui/shared/body.dart';
 import 'dart:html' as html;
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -29,6 +28,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    Widget content = _buildContent(context);
+    Body body;
+
     return Container(
         decoration: _buildBackground(context),
         child: Scaffold(
@@ -38,7 +40,8 @@ class _HomePageState extends State<HomePage> {
                 : null,
             appBar: _buildAppBar(context),
             body: LayoutBuilder(builder: (context, constraints) {
-              return _buildBody(context, constraints);
+              body = Body(constraints, content);
+              return body;
             })));
   }
 
@@ -57,102 +60,6 @@ class _HomePageState extends State<HomePage> {
   AppDrawer _buildDrawer(BuildContext context) {
     const AppDrawer drawer = AppDrawer();
     return drawer;
-  }
-
-  ////////////////////////////////////////////////////////////////////////////////////
-  //Home Page Screen Methods
-  ////////////////////////////////////////////////////////////////////////////////////
-  Widget _buildBody(BuildContext context, BoxConstraints constraints) {
-    return SingleChildScrollView(
-        child: Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: ResponsiveWidget.isSmallScreen(context)
-              ? ScreenUtil.getInstance().setWidth(25)
-              : ScreenUtil.getInstance().setWidth(108)),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minWidth: constraints.maxWidth,
-          minHeight: constraints.maxHeight,
-        ),
-        child: ResponsiveWidget(
-            largeScreen: _buildLargeScreen(context),
-            mediumScreen: _buildMediumScreen(context),
-            smallScreen: _buildSmallScreen(context)),
-      ),
-    ));
-  }
-
-  Widget _buildLargeScreen(BuildContext context) {
-    return IntrinsicHeight(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(flex: 1, child: _buildContent(context)),
-              ],
-            ),
-          ),
-          _buildFooter(context)
-        ],
-      ),
-    );
-  }
-
-  Widget _buildMediumScreen(BuildContext context) {
-    return IntrinsicHeight(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(flex: 1, child: _buildContent(context)),
-              ],
-            ),
-          ),
-          _buildFooter(context)
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSmallScreen(BuildContext context) {
-    const SocialIcons socialIcons = SocialIcons();
-
-    return IntrinsicHeight(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(flex: 1, child: _buildContent(context)),
-                const Divider(),
-                _buildNameText(context),
-                SizedBox(
-                    height:
-                        ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
-                socialIcons,
-                SizedBox(
-                    height:
-                        ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   ////////////////////////////////////////////////////////////////////////////////////
@@ -196,7 +103,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildIntroText(BuildContext context) {
     return Text(
       Strings.homeIntroText,
-      style: GoogleFonts.josefinSans(
+      style: GoogleFonts.lato(
         textStyle: TextStyles.homeIntro.copyWith(
           fontSize: ResponsiveWidget.isSmallScreen(context) ? 25.0 : 35.0,
         ),
@@ -212,14 +119,6 @@ class _HomePageState extends State<HomePage> {
       image: AssetImage(Assets.mountains),
       fit: BoxFit.cover,
     ));
-  }
-
-  ////////////////////////////////////////////////////////////////////////////////////
-  //Footer Methods
-  ////////////////////////////////////////////////////////////////////////////////////
-  Widget _buildFooter(BuildContext context) {
-    const Footer footer = Footer();
-    return footer;
   }
 
   //End of _HomePageState

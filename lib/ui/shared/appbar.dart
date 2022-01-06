@@ -2,6 +2,7 @@
 //AppBar File:
 //
 //Contains AppBar class
+//Contains ActionButton class
 //Contains AppDrawer class
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,7 +33,9 @@ class NewAppBar extends StatelessWidget {
     return AppBar(
       backgroundColor: values.appBarColor,
       elevation: 0.0,
-      automaticallyImplyLeading: ResponsiveWidget.isSmallScreen(context) ? true : false, //Gets rid of the back arrow button on the app bar
+      automaticallyImplyLeading: ResponsiveWidget.isSmallScreen(context)
+          ? true
+          : false, //Gets rid of the back arrow button on the app bar
       actions: ResponsiveWidget.isSmallScreen(context)
           ? null
           : _buildAppBarActions(context),

@@ -40,4 +40,10 @@ class TextStyles {
         fontSize: 24.0,
         letterSpacing: 1.2,
       );
+
+  static TextStyle get aboutMeText => const TextStyle(
+        color: Colors.black87,
+        fontSize: 10.0,
+        letterSpacing: 1.0,
+      );
 }
