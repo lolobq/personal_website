@@ -48,7 +48,7 @@ class _InterestTileState extends State<InterestTile> {
   Widget _buildInterestTile(BuildContext context) {
     return OnHover(
       child: Container(
-        height: 500,
+        height: ResponsiveWidget.isSmallScreen(context) ? 425.0 : 500.0,
         width: 400,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20)),

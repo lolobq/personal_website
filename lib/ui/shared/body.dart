@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:personal_website/responsive.dart';
-import 'package:personal_website/screen_util.dart';
 import 'package:personal_website/ui/shared/footer.dart';
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -32,9 +31,7 @@ class Body extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: ResponsiveWidget.isSmallScreen(context)
-                  ? 25
-                  : 70),
+              horizontal: ResponsiveWidget.isSmallScreen(context) ? 25 : 70),
           child: ConstrainedBox(
             constraints: BoxConstraints(
               minWidth: constraints.maxWidth,
@@ -94,7 +91,8 @@ class Body extends StatelessWidget {
   }
 
   Widget _buildSmallScreen(BuildContext context, Widget content) {
-    const SocialIcons socialIcons = SocialIcons();
+    const SocialIcons socialIcons =
+        SocialIcons(iconHeight: 30, iconWidth: 30, spaceBetween: 16);
 
     return IntrinsicHeight(
       child: Column(

@@ -105,10 +105,12 @@ class Strings {
   static const String weightliftingLink = '';
   static const String travelLink =
       'https://www.google.com/maps/d/edit?mid=1034hFnXzE9-OUggmtzCZ8wbTfeXZk0_A&usp=sharing';
-  static const String readingLink = 'https://www.goodreads.com/user/show/81429668-lauren';
+  static const String readingLink =
+      'https://www.goodreads.com/user/show/81429668-lauren';
   static const String tennisLink =
       'https://app.universaltennis.com/profiles/396895?t=1';
-  static const String skiingLink = 'https://www.google.com/maps/d/edit?mid=1CrR_SEYLNIilQh69m2R5Kp_spZfJqxD3&usp=sharing';
+  static const String skiingLink =
+      'https://www.google.com/maps/d/edit?mid=1CrR_SEYLNIilQh69m2R5Kp_spZfJqxD3&usp=sharing';
   static const String carsHoverText = '';
 
   static const String weightliftingCaption =
@@ -129,4 +131,10 @@ class Strings {
   static const String carsCaption =
       'Fun fact: I\'ve had a love of cars since I was little. '
       'Hot wheels were my favorite toys and I had a tote container full of them.';
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Contact Page Strings
+  ////////////////////////////////////////////////////////////////////////////////////
+  static const String contactMe = 'Contact Me';
+  static const String contactFormLink = 'https://hqhpiv0pkkw.typeform.com/to/amjWm6TI';
 }

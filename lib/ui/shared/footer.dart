@@ -25,7 +25,8 @@ class Footer extends StatelessWidget {
   //Footer Methods
   ////////////////////////////////////////////////////////////////////////////////////
   Widget _buildFooter(BuildContext context) {
-    const SocialIcons socialIcons = SocialIcons();
+    const SocialIcons socialIcons =
+        SocialIcons(iconHeight: 30, iconWidth: 30, spaceBetween: 16);
 
     return Column(
       children: <Widget>[
@@ -81,17 +82,25 @@ class Footer extends StatelessWidget {
 //SocialIcons Class
 ////////////////////////////////////////////////////////////////////////////////////
 class SocialIcons extends StatelessWidget {
-  const SocialIcons({Key? key}) : super(key: key);
+  final double iconHeight;
+  final double iconWidth;
+  final double spaceBetween;
+  const SocialIcons(
+      {required this.iconHeight,
+      required this.iconWidth,
+      required this.spaceBetween,
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return _buildSocialIcons();
+    return _buildSocialIcons(iconHeight, iconWidth, spaceBetween);
   }
 
   ////////////////////////////////////////////////////////////////////////////////////
   //SocialIcons Methods
   ////////////////////////////////////////////////////////////////////////////////////
-  Widget _buildSocialIcons() {
+  Widget _buildSocialIcons(double heightIn, double widthIn, double spaceIn) {
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -103,19 +112,19 @@ class SocialIcons extends StatelessWidget {
           },
           child: Image.asset(
             Assets.linkedIn,
-            height: 30.0,
-            width: 30.0,
+            height: heightIn,
+            width: widthIn,
           ),
         ),
-        const SizedBox(width: 16.0),
+        SizedBox(width: spaceIn),
         GestureDetector(
           onTap: () {
             html.window.open("https://github.com/lolobq", "Github");
           },
           child: Image.network(
             Assets.github,
-            height: 30.0,
-            width: 30.0,
+            height: heightIn,
+            width: widthIn,
           ),
         ),
       ],
