@@ -86,17 +86,22 @@ class _ResumePageState extends State<ResumePage> {
               const SizedBox(height: 10),
               _buildResumeButton(context),
               const SizedBox(height: 45),
-              _buildEducationText(context),
-              const SizedBox(height: 10),
-              _buildEducationTiles(context),
-              const SizedBox(height: 45),
               _buildExperienceText(context),
               const SizedBox(height: 10),
               _buildExperienceTiles(context),
               const SizedBox(height: 45),
+              _buildEducationText(context),
+              const SizedBox(height: 10),
+              _buildEducationTiles(context),
+              const SizedBox(height: 45),
               _buildSkillsText(context),
               const SizedBox(height: 30),
               _buildSkillsList(context),
+              const SizedBox(height: 60),
+              _buildSelectedCoursesText(context),
+              const SizedBox(height: 20),
+              _buildSelectedCoursesSection(context),
+              const SizedBox(height: 45),
             ],
           ),
         ));
@@ -198,72 +203,131 @@ class _ResumePageState extends State<ResumePage> {
   }
 
   Widget _buildSkillsList(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
       children: [
-        Container(
-          padding: const EdgeInsets.only(right: 10),
-          child: Row(
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            textDirection: TextDirection.ltr,
             children: [
-              Text(
-                Strings.languages,
-                style: GoogleFonts.josefinSans(
-                    textStyle: TextStyles.homeIntro.copyWith(
-                  fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 30.0,
-                  fontWeight: FontWeight.bold,
-                )
-              )),
-              Text(
-                Strings.languagesList,
-                style: GoogleFonts.josefinSans(
-                    textStyle: TextStyles.homeIntro.copyWith(
-                  fontSize: ResponsiveWidget.isSmallScreen(context) ? 16.0 : 25.0,
-                )
-              )),
+              RichText(
+                text: TextSpan(
+                  text: Strings.languages,
+                  style: GoogleFonts.josefinSans(
+                      textStyle: TextStyles.homeIntro.copyWith(
+                    fontSize:
+                        ResponsiveWidget.isSmallScreen(context) ? 20.0 : 30.0,
+                    fontWeight: FontWeight.bold,
+                    height: 1.5,
+                  )),
+                  children: <InlineSpan>[
+                    TextSpan(
+                        text: Strings.languagesList,
+                        style: GoogleFonts.josefinSans(
+                            textStyle: TextStyles.homeIntro.copyWith(
+                          fontSize: ResponsiveWidget.isSmallScreen(context)
+                              ? 16.0
+                              : 25.0,
+                        ))),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              RichText(
+                text: TextSpan(
+                  text: Strings.frameworks,
+                  style: GoogleFonts.josefinSans(
+                      textStyle: TextStyles.homeIntro.copyWith(
+                    fontSize:
+                        ResponsiveWidget.isSmallScreen(context) ? 20.0 : 30.0,
+                    fontWeight: FontWeight.bold,
+                    height: 1.5,
+                  )),
+                  children: <InlineSpan>[
+                    TextSpan(
+                        text: Strings.frameworksList,
+                        style: GoogleFonts.josefinSans(
+                            textStyle: TextStyles.homeIntro.copyWith(
+                          fontSize: ResponsiveWidget.isSmallScreen(context)
+                              ? 16.0
+                              : 25.0,
+                        ))),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              RichText(
+                text: TextSpan(
+                  text: Strings.tools,
+                  style: GoogleFonts.josefinSans(
+                      textStyle: TextStyles.homeIntro.copyWith(
+                    fontSize:
+                        ResponsiveWidget.isSmallScreen(context) ? 20.0 : 30.0,
+                    fontWeight: FontWeight.bold,
+                    height: 1.5,
+                  )),
+                  children: <InlineSpan>[
+                    TextSpan(
+                        text: Strings.toolsList,
+                        style: GoogleFonts.josefinSans(
+                            textStyle: TextStyles.homeIntro.copyWith(
+                          fontSize: ResponsiveWidget.isSmallScreen(context)
+                              ? 16.0
+                              : 25.0,
+                        ))),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
             ],
           ),
         ),
-        const SizedBox(height: 20),
-        Row(
-          children: [
-            Text(
-              Strings.frameworks,
-              style: GoogleFonts.josefinSans(
-                  textStyle: TextStyles.homeIntro.copyWith(
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 30.0,
-                fontWeight: FontWeight.bold,
-              )
-            )),
-            Text(
-              Strings.frameworksList,
-              style: GoogleFonts.josefinSans(
-                  textStyle: TextStyles.homeIntro.copyWith(
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 16.0 : 25.0,
-              )
-            )),
-          ],
-        ),
-        const SizedBox(height: 20),
-        Row(
-          children: [
-            Text(
-              Strings.tools,
-              style: GoogleFonts.josefinSans(
-                  textStyle: TextStyles.homeIntro.copyWith(
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 30.0,
-                fontWeight: FontWeight.bold,
-              )
-            )),
-            Text(
-              Strings.toolsList,
-              style: GoogleFonts.josefinSans(
-                  textStyle: TextStyles.homeIntro.copyWith(
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 16.0 : 25.0,
-              )
-            )),
-          ],
-        ),
-        const SizedBox(height: 20),
+      ],
+    );
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Selected Courses Methods
+  ////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////
+  Widget _buildSelectedCoursesText(BuildContext context) {
+    return Text(
+      Strings.selectedCourses,
+      style: GoogleFonts.josefinSans(
+          textStyle: TextStyles.homeName.copyWith(
+        fontSize: ResponsiveWidget.isSmallScreen(context) ? 25.0 : 35.0,
+      )),
+    );
+  }
+
+  Widget _buildSelectedCourseChip(BuildContext context, String label) {
+    return Chip(
+        padding: const EdgeInsets.all(10),
+        backgroundColor: Colors.white,
+        label: Text(
+          label,
+          style: GoogleFonts.lato(
+              textStyle: TextStyles.homeIntro.copyWith(
+            fontSize: ResponsiveWidget.isSmallScreen(context) ? 16.0 : 20.0,
+          )),
+        ));
+  }
+
+  Widget _buildSelectedCoursesSection(BuildContext context) {
+    final List<Widget> widgets = Strings.courseList
+        .map((course) => Padding(
+              padding: const EdgeInsets.only(bottom: 10.0, right: 8.0),
+              child: _buildSelectedCourseChip(context, course),
+            ))
+        .toList();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Wrap(
+          children: widgets,
+          alignment: WrapAlignment.center,
+        )
       ],
     );
   }

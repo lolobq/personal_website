@@ -143,7 +143,7 @@ class Strings {
   //Headers
   static const String education = 'Education:';
   static const String experience = 'Experience:';
-  static const String skills = 'Skills (In Decreasing Proficiency):';
+  static const String skills = 'Skills:';
   static const String selectedCourses = 'Selected Courses:';
 
   //Education strings
@@ -183,7 +183,7 @@ class Strings {
   static const String researchJobTitle = 'Undergraduate Researcher';
   static const String researchDates = 'Oct. 2021 - Present';
   static const String researchBullet1 =
-      'Developing a first-of-its-kind mobile app that provides real-time video analytics'
+      'Developing a first-of-its-kind mobile app that provides real-time video analytics '
       'to workers and community members to improve safety';
   static const String researchBullet2 = 'Experience using VS Code and Flutter';
   static const String researchBullet3 =
@@ -258,17 +258,30 @@ class Strings {
   static const String compSci = 'ITCS 1213: AP Computer Science';
   static const String webDesign = 'CS 140: Web Design';
   static const String anatomy = 'BIO 213: Anatomy & Physiology I & Lab';
-  static const String physics1 = 'PHYS 2101: Physics for Engineers I & Lab';
-  static const String physics2 = 'BIO 2102: Physics for Engineers II & Lab';
+  static const String physics2 = 'PHYS 2102: Physics for Engineers II & Lab';
   static const String calcBC = 'MATH 1242: AP Calculus BC';
   static const String matrices = 'MATH 2164: Matrices and Linear Algebra';
   static const String diffEqs = 'MATH 2171: Differential Equations';
   static const String engPrac =
       'ENGR 1202: Intro to Engineering Practices & Principles II';
-  static const String intrumentation =
+  static const String instrumentation =
       'ECGR 2155: Instrumentation & Networks Lab';
   static const String networkTheory1 = 'ECGR 2111: Network Theory I';
   static const String logicSystems = 'ECGR 2181: Logic Systems Design';
+  static final List<String> courseList = [
+    compUtil,
+    compSci,
+    webDesign,
+    anatomy,
+    physics2,
+    calcBC,
+    matrices,
+    diffEqs,
+    engPrac,
+    instrumentation,
+    networkTheory1,
+    logicSystems,
+  ];
 
   ////////////////////////////////////////////////////////////////////////////////////
   //Contact Page Strings
