@@ -1,4 +1,9 @@
-import 'package:flutter/material.dart';
+////////////////////////////////////////////////////////////////////////////////////
+//Experiences File:
+//
+//Contains Education and Work Experiences created using the Experience class
+////////////////////////////////////////////////////////////////////////////////////
+
 import 'package:personal_website/constants/strings.dart';
 import 'package:personal_website/widgets.dart';
 import 'assets.dart';
