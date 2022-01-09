@@ -4,12 +4,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_website/responsive.dart';
 import 'package:personal_website/constants/text_styles.dart';
 import 'package:personal_website/constants/values.dart' as values;
 import 'dart:html' as html;
+
+import 'constants/assets.dart';
 
 //WIDGETS FOR ABOUT PAGE//
 
@@ -421,4 +426,117 @@ class _ExperienceTileState extends State<ExperienceTile> {
     );
   }
   //End of Experience Tile State class
+}
+
+//WIDGETS FOR PROJECTS PAGE//
+
+////////////////////////////////////////////////////////////////////////////////////
+//Project Class
+////////////////////////////////////////////////////////////////////////////////////
+class Project {
+  String projectName;
+  String caption;
+  String pictureLink;
+  String githubLink;
+  String techStack;
+
+  Project(
+    this.projectName,
+    this.caption,
+    this.pictureLink,
+    this.githubLink,
+    this.techStack,
+  );
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+//Project Tile Class
+////////////////////////////////////////////////////////////////////////////////////
+class ProjectTile extends StatefulWidget {
+  final Project project;
+  const ProjectTile({required this.project, Key? key}) : super(key: key);
+
+  @override
+  _ProjectTileState createState() => _ProjectTileState();
+}
+
+class _ProjectTileState extends State<ProjectTile> {
+  @override
+  Widget build(BuildContext context) {
+    return _buildProjectTile(context);
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Project Tile Methods
+  ////////////////////////////////////////////////////////////////////////////////////
+  Widget _buildProjectTile(BuildContext context) {
+    return Container(
+      height: ResponsiveWidget.isSmallScreen(context) ? 425.0 : 500.0,
+      width: 400,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: Colors.white,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const SizedBox(height: 15),
+          Text(
+            widget.project.projectName,
+            style: GoogleFonts.josefinSans(
+                textStyle: TextStyles.appbaritem.copyWith(
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 22.0 : 30.0,
+              color: values.appBarColor,
+            )),
+          ),
+          const Divider(),
+          const SizedBox(height: 8),
+          CircleAvatar(
+            radius: ResponsiveWidget.isSmallScreen(context) ? 120 : 150,
+            backgroundImage: AssetImage(widget.project.pictureLink),
+          ),
+          const SizedBox(height: 15),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(
+              widget.project.caption,
+              style: GoogleFonts.lato(
+                  textStyle: TextStyles.aboutMeText.copyWith(
+                fontSize: 16.0,
+                color: Colors.black87,
+              )),
+            ),
+          ),
+          const Divider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+              widget.project.techStack,
+              style: GoogleFonts.lato(
+                  textStyle: TextStyles.aboutMeText.copyWith(
+                  fontSize: 16.0,
+                  color: Colors.black87,
+                )),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  html.window.open(widget.project.githubLink, "Github");
+                },
+                child: Image.network(
+                  Assets.github,
+                  height: 30,
+                  width: 30,
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: values.containerBackgroundColor,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
 }

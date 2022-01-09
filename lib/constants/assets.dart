@@ -23,4 +23,5 @@ class Assets {
   static const String progressEngineering = 'assets/progressengineering.jpg';
   static const String theAcademies = 'assets/theacademies.png';
   static const String uncCharlotte = 'assets/unccharlotte.png';
+  static const String website = 'assets/website.PNG';
 }

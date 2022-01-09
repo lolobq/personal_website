@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_website/constants/text_styles.dart';
 import 'package:personal_website/constants/assets.dart';
+import 'package:personal_website/constants/values.dart' as values;
 import 'dart:html' as html;
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -105,8 +106,8 @@ class SocialIcons extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        GestureDetector(
-          onTap: () {
+        ElevatedButton(
+          onPressed: () {
             html.window.open(
                 "https://www.linkedin.com/in/lauren-bourque/", "LinkedIn");
           },
@@ -115,16 +116,22 @@ class SocialIcons extends StatelessWidget {
             height: heightIn,
             width: widthIn,
           ),
+          style: ElevatedButton.styleFrom(
+            primary: values.containerBackgroundColor,
+          ),
         ),
         SizedBox(width: spaceIn),
-        GestureDetector(
-          onTap: () {
+        ElevatedButton(
+          onPressed: () {
             html.window.open("https://github.com/lolobq", "Github");
           },
           child: Image.network(
             Assets.github,
             height: heightIn,
             width: widthIn,
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: values.containerBackgroundColor,
           ),
         ),
       ],

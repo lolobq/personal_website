@@ -284,6 +284,18 @@ class Strings {
   ];
 
   ////////////////////////////////////////////////////////////////////////////////////
+  //Projects Page Strings
+  ////////////////////////////////////////////////////////////////////////////////////
+  //Personal Website
+  static const String personalWebsiteName = 'Personal Website';
+  static const String personalWebsiteCaption =
+      'My personal website built using Flutter and Github Pages. '
+      'Contains a home page, about me section, resume, projects, and contact section.';
+  static const String personalWebsiteRepo =
+      'https://github.com/lolobq/personal_website';
+  static const String personalWebsiteTechStack = 'Flutter, Github Pages';
+
+  ////////////////////////////////////////////////////////////////////////////////////
   //Contact Page Strings
   ////////////////////////////////////////////////////////////////////////////////////
   static const String contactMe = 'Contact Me';
