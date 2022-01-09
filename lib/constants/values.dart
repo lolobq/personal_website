@@ -18,4 +18,6 @@ const double tabIndicatorHeight = 4;
 const Color homeNameTextColor = Color.fromARGB(255, 2, 41, 71); //navy blue
 const Color homeBodyTextColor = Colors.black;
 
-//Home Page Values
+//Background color
+Color containerBackgroundColor = Colors.grey.shade200;
+const Color experienceBackgroundColor = Colors.white;

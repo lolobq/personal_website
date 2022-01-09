@@ -56,7 +56,11 @@ flutter:
   - assets/laurentennis.PNG
   - assets/laurentravel.jpg
   - assets/linkedin.png
+  - assets/messalonskeehigh.png
   - assets/mountains.jpg
+  - assets/progressengineering.jpg
+  - assets/theacademies.png
+  - assets/unccharlotte.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -18,5 +18,9 @@ class Assets {
   static const String laurenTennis = 'assets/laurentennis.PNG';
   static const String laurenTravel = 'assets/laurentravel.jpg';
   static const String linkedIn = 'assets/linkedin.png';
+  static const String messalonskeeHigh = 'assets/messalonskeehigh.png';
   static const String mountains = 'assets/mountains.jpg';
+  static const String progressEngineering = 'assets/progressengineering.jpg';
+  static const String theAcademies = 'assets/theacademies.png';
+  static const String uncCharlotte = 'assets/unccharlotte.png';
 }

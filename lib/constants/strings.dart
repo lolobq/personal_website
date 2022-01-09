@@ -12,7 +12,7 @@ class Strings {
   ////////////////////////////////////////////////////////////////////////////////////
   static const String home = 'Home';
   static const String about = 'About';
-  static const String experience = 'Experience';
+  static const String resume = 'Resume';
   static const String projects = 'Projects';
   static const String contact = 'Contact';
 
@@ -95,7 +95,7 @@ class Strings {
   ];
 
   //Interests strings
-  static const String iLike = 'I Like: (Click to explore)';
+  static const String iLike = 'I Like: (Click to Explore)';
   static const String weightlifting = 'Weightlifting';
   static const String travel = 'Travel';
   static const String reading = 'Reading';
@@ -133,8 +133,147 @@ class Strings {
       'Hot wheels were my favorite toys and I had a tote container full of them.';
 
   ////////////////////////////////////////////////////////////////////////////////////
+  //Resume Page Strings
+  ////////////////////////////////////////////////////////////////////////////////////
+  static const String resumeCaps = 'RESUME';
+  static const String resumePDF = 'Resume PDF';
+  static const String resumeLink =
+      'https://drive.google.com/file/d/1qgtbnpprWk92jbUz-AcCIsWlN6cGSNy_/view?usp=sharing';
+
+  //Headers
+  static const String education = 'Education:';
+  static const String experience = 'Experience:';
+  static const String skills = 'Skills (In Decreasing Proficiency):';
+  static const String selectedCourses = 'Selected Courses:';
+
+  //Education strings
+  //UNC Charlotte
+  static const String uncCharlotte = 'UNC Charlotte';
+  static const String charlotteDegree = 'B.S. in Computer Engineering';
+  static const String charlotteDates = 'December 2024';
+  static const String charlotteLink = 'https://www.charlotte.edu/';
+  static const String charlotteBullet1 = 'Minor in Data Science';
+  static const String charlotteBullet2 = 'GPA: 3.785/4.0';
+  static const String charlotteBullet3 =
+      'Clubs & Activities: Engineering Freshman Learning Community, '
+      'MAPS (Maximizing Academic and Personal Success), WE Engage! (Women in Engineering Engage), Club Tennis';
+  static final List<String> charlotteBullets = [
+    charlotteBullet1,
+    charlotteBullet2,
+    charlotteBullet3
+  ];
+
+  //Messalonskee
+  static const String messalonskee = 'Messalonskee High School';
+  static const String messoDegree = 'High School Diploma';
+  static const String messoDates = 'June 2020';
+  static const String messoLink = 'https://mhs.rsu18.org/';
+  static const String messoBullet1 = 'Rank: 3/181';
+  static const String messoBullet2 = 'GPA: 101.4/100';
+  static const String messoBullet3 =
+      'Clubs & Activities: Varsity Tennis, Varsity Golf, Math Team, Key Club, National Honors Society';
+  static final List<String> messoBullets = [
+    messoBullet1,
+    messoBullet2,
+    messoBullet3
+  ];
+
+  //Work strings
+  //UNCC Research
+  static const String researchJobTitle = 'Undergraduate Researcher';
+  static const String researchDates = 'Oct. 2021 - Present';
+  static const String researchBullet1 =
+      'Developing a first-of-its-kind mobile app that provides real-time video analytics'
+      'to workers and community members to improve safety';
+  static const String researchBullet2 = 'Experience using VS Code and Flutter';
+  static const String researchBullet3 =
+      'Meeting with fellow researchers and the founder of the TeCSAR lab to implement desired features';
+  static final List<String> researchBullets = [
+    researchBullet1,
+    researchBullet2,
+    researchBullet3,
+  ];
+
+  //Progress Engineering
+  static const String progressEng = 'Progress Engineering, LLC';
+  static const String progressJobTitle = 'Technical Intern';
+  static const String progressDates = 'Sept. 2020 - July 2021';
+  static const String progressLink = 'https://www.progresseng.com/';
+  static const String progressBullet1 =
+      'Used C# to develop edger, trimmer, and open-face log optimization software for sawmills';
+  static const String progressBullet2 =
+      'Used FactoryTalk View and Citect to develop Human-Machine Interfaces and SCADA systems'
+      ' for various mills';
+  static const String progressBullet3 =
+      'Acted as project manager on a handful of smaller factory automation projects';
+  static const String progressBullet4 =
+      'Established connections with factory owners and staff';
+  static final List<String> progressBullets = [
+    progressBullet1,
+    progressBullet2,
+    progressBullet3,
+    progressBullet4,
+  ];
+
+  //Harvard Summer Business Academy
+  static const String harvardSummer = 'Harvard Student Agencies';
+  static const String harvardJobTitle = 'Summer Business Academy Participant';
+  static const String harvardDates = 'July 2019';
+  static const String harvardLink = 'https://homeacademies.com/';
+  static const String harvardBullet1 =
+      'Attended the Summer Business Academy at Harvard University';
+  static const String harvardBullet2 =
+      'Created a mock startup and pitched it with my peers to entrepreneurs and professors';
+  static const String harvardBullet3 =
+      'Led the economic research portion of the project';
+  static const String harvardBullet4 = 'Won the competition';
+  static final List<String> harvardBullets = [
+    harvardBullet1,
+    harvardBullet2,
+    harvardBullet3,
+    harvardBullet4,
+  ];
+
+  //Skills
+  //Languages
+  static const String languages = 'Languages: ';
+  static const String languagesList =
+      'C#, Java, Dart, C++, LaTeX, MATLAB, HTML/CSS, and VBA';
+
+  //Frameworks
+  static const String flutter = 'Flutter';
+  static const String frameworks = 'Frameworks: ';
+  static const String frameworksList = flutter;
+
+  //Tools & Technologies
+  static const String visualStudio = 'Visual Studio, ';
+  static const String vsCode = 'VS Code, ';
+  static const String ftView = 'FactoryTalk View Studio, ';
+  static const String citect = 'and Citect SCADA';
+  static const String tools = 'Tools & Technologies: ';
+  static const String toolsList = visualStudio + vsCode + ftView + citect;
+
+  //Selected Courses
+  static const String compUtil = 'ECGR 2103: Computer Utilization in C++';
+  static const String compSci = 'ITCS 1213: AP Computer Science';
+  static const String webDesign = 'CS 140: Web Design';
+  static const String anatomy = 'BIO 213: Anatomy & Physiology I & Lab';
+  static const String physics1 = 'PHYS 2101: Physics for Engineers I & Lab';
+  static const String physics2 = 'BIO 2102: Physics for Engineers II & Lab';
+  static const String calcBC = 'MATH 1242: AP Calculus BC';
+  static const String matrices = 'MATH 2164: Matrices and Linear Algebra';
+  static const String diffEqs = 'MATH 2171: Differential Equations';
+  static const String engPrac =
+      'ENGR 1202: Intro to Engineering Practices & Principles II';
+  static const String intrumentation =
+      'ECGR 2155: Instrumentation & Networks Lab';
+  static const String networkTheory1 = 'ECGR 2111: Network Theory I';
+  static const String logicSystems = 'ECGR 2181: Logic Systems Design';
+
+  ////////////////////////////////////////////////////////////////////////////////////
   //Contact Page Strings
   ////////////////////////////////////////////////////////////////////////////////////
   static const String contactMe = 'Contact Me';
-  static const String contactFormLink = 'https://hqhpiv0pkkw.typeform.com/to/amjWm6TI';
+  static const String contactFormLink =
+      'https://hqhpiv0pkkw.typeform.com/to/amjWm6TI';
 }

@@ -56,7 +56,7 @@ class NewAppBar extends StatelessWidget {
   List<Widget> _buildAppBarActions(BuildContext context) {
     const ActionButton homeButton = ActionButton(Pages.home);
     const ActionButton aboutButton = ActionButton(Pages.about);
-    const ActionButton experienceButton = ActionButton(Pages.experience);
+    const ActionButton experienceButton = ActionButton(Pages.resume);
     const ActionButton projectsButton = ActionButton(Pages.projects);
     const ActionButton contactButton = ActionButton(Pages.contact);
 
@@ -87,8 +87,8 @@ class ActionButton extends StatelessWidget {
       displayText = Strings.home;
     } else if (selectedPage == Pages.about) {
       displayText = Strings.about;
-    } else if (selectedPage == Pages.experience) {
-      displayText = Strings.experience;
+    } else if (selectedPage == Pages.resume) {
+      displayText = Strings.resume;
     } else if (selectedPage == Pages.projects) {
       displayText = Strings.projects;
     } else if (selectedPage == Pages.contact) {
@@ -135,7 +135,7 @@ class AppDrawer extends StatelessWidget {
   ListView _buildDrawerActions(BuildContext context) {
     const ActionButton homeButton = ActionButton(Pages.home);
     const ActionButton aboutButton = ActionButton(Pages.about);
-    const ActionButton experienceButton = ActionButton(Pages.experience);
+    const ActionButton experienceButton = ActionButton(Pages.resume);
     const ActionButton projectsButton = ActionButton(Pages.projects);
     const ActionButton contactButton = ActionButton(Pages.contact);
 

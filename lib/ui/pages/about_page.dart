@@ -69,7 +69,7 @@ class _AboutPageState extends State<AboutPage> {
     return Container(
         padding: const EdgeInsets.only(top: 15),
         child: Container(
-          color: Colors.grey.shade200,
+          color: values.containerBackgroundColor,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -114,7 +114,6 @@ class _AboutPageState extends State<AboutPage> {
   ////////////////////////////////////////////////////////////////////////////////////
   //Intro Methods
   ////////////////////////////////////////////////////////////////////////////////////
-
   Widget _buildAboutMeText(BuildContext context) {
     return Text(
       Strings.aboutMe,
@@ -190,7 +189,6 @@ class _AboutPageState extends State<AboutPage> {
   ////////////////////////////////////////////////////////////////////////////////////
   //How I Got Here Methods
   ////////////////////////////////////////////////////////////////////////////////////
-
   Widget _buildHowIGotHereText(BuildContext context) {
     return Text(
       Strings.howIGotHere,
@@ -199,53 +197,6 @@ class _AboutPageState extends State<AboutPage> {
         fontSize: ResponsiveWidget.isSmallScreen(context) ? 22.0 : 30.0,
       )),
     );
-  }
-
-  Widget _buildBulletList(BuildContext context, List<String> strings) {
-    var widgetList = <Widget>[];
-    for (var string in strings) {
-      widgetList.add(_buildBulletPoint(context, string));
-      widgetList.add(const SizedBox(height: 10));
-    }
-    return Column(children: widgetList);
-  }
-
-  Widget _buildBulletPoint(BuildContext context, String content) {
-    return Container(
-        padding: EdgeInsets.only(
-            right: ResponsiveWidget.isSmallScreen(context) ? 10.0 : 60.0,
-            bottom: 10),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            //Creates the bullet point
-            Column(
-              children: [
-                const SizedBox(height: 10),
-                Container(
-                  padding: const EdgeInsets.only(top: 20),
-                  height: 5,
-                  width: 5,
-                  decoration: const BoxDecoration(
-                    color: Colors.black87,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ],
-            ),
-            //Creates space between the beginning of the text and the bullet point
-            const SizedBox(width: 5),
-            //Formats the text to indent when it goes to the next line
-            Expanded(
-              child: Text(content,
-                  style: GoogleFonts.lato(
-                      textStyle: TextStyles.aboutMeText.copyWith(
-                    fontSize:
-                        ResponsiveWidget.isSmallScreen(context) ? 16.0 : 20.0,
-                  ))),
-            ),
-          ],
-        ));
   }
 
   Widget _buildHowIGotHereSection(BuildContext context) {
@@ -262,12 +213,15 @@ class _AboutPageState extends State<AboutPage> {
   }
 
   Widget _buildCenteredHowIGotHereSection(BuildContext context) {
+    BulletList aboutBulletList =
+        BulletList(strings: Strings.aboutBullets, heightBetweenPoints: 10.0, smallSize: 16.0, largeSize: 20.0,);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _buildHowIGotHereText(context),
         const SizedBox(height: 20),
-        _buildBulletList(context, Strings.aboutBullets),
+        aboutBulletList,
         const SizedBox(height: 20),
       ],
     );
@@ -381,7 +335,6 @@ class _AboutPageState extends State<AboutPage> {
   ////////////////////////////////////////////////////////////////////////////////////
   //Background Method
   ////////////////////////////////////////////////////////////////////////////////////
-
   BoxDecoration _buildBackground(BuildContext context) {
     return const BoxDecoration(
         image: DecorationImage(
