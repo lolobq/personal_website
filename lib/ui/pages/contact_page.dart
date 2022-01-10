@@ -69,7 +69,7 @@ class _ContactPageState extends State<ContactPage> {
   Widget _buildContent(BuildContext context) {
     const SocialIcons socialIcons = SocialIcons(
         iconHeight: 60,
-        iconWidth: 60,
+        iconWidth: 90,
         spaceBetween: 20);
 
     return Container(

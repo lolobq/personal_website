@@ -513,9 +513,9 @@ class _ProjectTileState extends State<ProjectTile> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-              widget.project.techStack,
-              style: GoogleFonts.lato(
-                  textStyle: TextStyles.aboutMeText.copyWith(
+                widget.project.techStack,
+                style: GoogleFonts.lato(
+                    textStyle: TextStyles.aboutMeText.copyWith(
                   fontSize: 16.0,
                   color: Colors.black87,
                 )),
@@ -524,10 +524,17 @@ class _ProjectTileState extends State<ProjectTile> {
                 onPressed: () {
                   html.window.open(widget.project.githubLink, "Github");
                 },
-                child: Image.network(
-                  Assets.github,
-                  height: 30,
-                  width: 30,
+                child: Row(
+                  children: [
+                    Text(
+                      "GitHub",
+                      style: GoogleFonts.josefinSans(
+                          textStyle: TextStyles.homeName.copyWith(
+                        fontSize: 12,
+                        color: Colors.black,
+                      )),
+                    ),
+                  ],
                 ),
                 style: ElevatedButton.styleFrom(
                   primary: values.containerBackgroundColor,

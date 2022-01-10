@@ -6,6 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:personal_website/constants/strings.dart';
 import 'package:personal_website/constants/text_styles.dart';
 import 'package:personal_website/constants/assets.dart';
 import 'package:personal_website/constants/values.dart' as values;
@@ -27,7 +28,7 @@ class Footer extends StatelessWidget {
   ////////////////////////////////////////////////////////////////////////////////////
   Widget _buildFooter(BuildContext context) {
     const SocialIcons socialIcons =
-        SocialIcons(iconHeight: 30, iconWidth: 30, spaceBetween: 16);
+        SocialIcons(iconHeight: 30, iconWidth: 75, spaceBetween: 16);
 
     return Column(
       children: <Widget>[
@@ -106,26 +107,36 @@ class SocialIcons extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        GestureDetector(
-          onTap: () {
+        ElevatedButton(
+          onPressed: () {
             html.window.open(
                 "https://www.linkedin.com/in/lauren-bourque/", "LinkedIn");
           },
           child: Image.asset(
             Assets.linkedIn,
             height: heightIn,
-            width: widthIn,
+            width: heightIn,
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: values.containerBackgroundColor,
           ),
         ),
         SizedBox(width: spaceIn),
-        GestureDetector(
-          onTap: () {
+        ElevatedButton(
+          onPressed: () {
             html.window.open("https://github.com/lolobq", "Github");
           },
-          child: Image.network(
-            Assets.github,
-            height: heightIn,
-            width: widthIn,
+          child: Text(
+            "GitHub",
+            style: GoogleFonts.josefinSans(
+                textStyle: TextStyles.homeName.copyWith(
+              fontSize: 12,
+              color: Colors.black,
+            )),
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: values.containerBackgroundColor,
+            fixedSize: Size(widthIn, heightIn),
           ),
         ),
       ],
