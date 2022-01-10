@@ -106,8 +106,8 @@ class SocialIcons extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        ElevatedButton(
-          onPressed: () {
+        GestureDetector(
+          onTap: () {
             html.window.open(
                 "https://www.linkedin.com/in/lauren-bourque/", "LinkedIn");
           },
@@ -116,22 +116,16 @@ class SocialIcons extends StatelessWidget {
             height: heightIn,
             width: widthIn,
           ),
-          style: ElevatedButton.styleFrom(
-            primary: values.containerBackgroundColor,
-          ),
         ),
         SizedBox(width: spaceIn),
-        ElevatedButton(
-          onPressed: () {
+        GestureDetector(
+          onTap: () {
             html.window.open("https://github.com/lolobq", "Github");
           },
           child: Image.network(
             Assets.github,
             height: heightIn,
             width: widthIn,
-          ),
-          style: ElevatedButton.styleFrom(
-            primary: values.containerBackgroundColor,
           ),
         ),
       ],
